@@ -1,38 +1,190 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  background: #fefFff;
+  display: flex;
+  overflow-x: hidden;
+  padding: 0px 40px;
+}
+
+
+/*barra esquerda*/ 
+.menuContainer {
+  width: 100px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  top: 0;
+  padding: 30px 15px;
+}
+
+.subMenu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.menuContainer ion-icon {
+  font-size: 64px;
+  color: blueviolet;
+}
+
+.iconContainer {
+  width: 50px;
+  height: 50px;
+  min-width: 40px;
+  border-radius: 40%;
+  border: 2px solid #717273;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+  margin: 15px 0;
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.MuiSvgIcon-root {
+  color: #717273;
+  font-size: 18px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.iconContainer:hover, .iconContainer.active {
+  background:#717273;
+  
+}
+
+
+.iconContainer:hover .MuiSvgIcon-root, .iconContainer.active .MuiSvgIcon-root {
+  color: #feffff;
+}
+
+/*menu center superior*/
+
+main {
+  flex: 1;
+  height: 100%;
+  padding-top: 35px;
+  margin-left: 130px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: #feffff;
+  border: 2px solid #757677;
+  padding: 8px 15px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.searchBox input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #313233;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.search ion-icon {
+  font-size: 35px;
+  color: #717273;
+  cursor: pointer;
+}
+
+/*menu center inferior Pins*/
+
+.mainContainer {
+  flex: 1;
+  height: auto;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-auto-rows: 10px;
+  justify-content: center;
+}
+
+.pin {
+  border-radius: 16px;
+  background: #444;
+  margin: 5px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.pin .mainPic{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pin .content {
+  width: 100%;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  bottom: -55px;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+.pin .content h3 {
+  color: #feffff;
+  font-size: 18;
+  font-weight: 500;
+}
+
+.pin .content .search ion-icon {
+  color: #feffff;
+}
+
+.pin:hover .content {
+  bottom: 0;
+  transition: bottom 0.3s;
+}
+
+
+.pin.small {
+  grid-row-end: span 26;
+}
+
+.pin.medium {
+  grid-row-end: span 33;
+}
+
+.pin.large {
+  grid-row-end: span 45;
+}
+
+/*mediaquerie*/
+
+@media screen and (max-width: 480px) {
+  .App {
+    padding: 0px 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .menuContainer {
+    padding: 30px 0px;
+    width: unset;
+    left: 15px;
+  }
+
+  main {
+    margin-left: 75px;
   }
 }
